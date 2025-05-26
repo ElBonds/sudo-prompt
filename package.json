@@ -1,6 +1,6 @@
 {
   "name": "sudo-prompt",
-  "version": "9.2.1",
+  "version": "9.2.2",
   "description": "Run a command using sudo, prompting the user with an OS dialog if necessary",
   "main": "index.js",
   "types": "index.d.ts",
@@ -37,5 +37,8 @@
     "url": "https://github.com/jorangreef/sudo-prompt/issues"
   },
   "homepage": "https://github.com/jorangreef/sudo-prompt#readme",
-  "scripts": {}
+  "scripts": {
+    "test": "node test.js",
+    "test-concurrent": "node test-concurrent.js"
+  }
 }

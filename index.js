@@ -4,9 +4,16 @@ var Node = {
   fs: require('fs'),
   os: require('os'),
   path: require('path'),
-  process: process,
-  util: require('util')
+  process: process
 };
+
+function isObject(value){
+  return value !== null && typeof value === 'object';
+}
+
+function isFunction(value){
+  return typeof value === 'function';
+}
 
 function Attempt(instance, end) {
   var platform = Node.process.platform;
@@ -32,20 +39,20 @@ function Exec() {
     throw new Error('Command should be a string.');
   }
   if (arguments.length === 2) {
-    if (Node.util.isObject(arguments[1])) {
+    if (isObject(arguments[1])) {
       options = arguments[1];
-    } else if (Node.util.isFunction(arguments[1])) {
+    } else if (isFunction(arguments[1])) {
       end = arguments[1];
     } else {
       throw new Error('Expected options or callback.');
     }
   } else if (arguments.length === 3) {
-    if (Node.util.isObject(arguments[1])) {
+    if (isObject(arguments[1])) {
       options = arguments[1];
     } else {
       throw new Error('Expected options to be an object.');
     }
-    if (Node.util.isFunction(arguments[2])) {
+    if (isFunction(arguments[2])) {
       end = arguments[2];
     } else {
       throw new Error('Expected callback to be a function.');
